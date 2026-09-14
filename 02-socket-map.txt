@@ -1,4 +1,6 @@
-
+# CSC 436 - Homework 1 - task 2
+# Sockets and ports
+###############################
 
 PS C:\Users\mlkoe> netstat -ano
 
@@ -232,3 +234,5 @@ LocalAddress   LocalPort OwningProcess
 192.168.56.1         139             4
 172.30.48.1          139             4
 0.0.0.0              135          1740
+
+#######################################
