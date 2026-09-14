@@ -75,19 +75,19 @@ Active Connections
   TCP    192.168.80.204:55114   140.82.112.6:443       ESTABLISHED     9424
   TCP    192.168.80.204:59235   140.82.113.26:443      ESTABLISHED     9424
   TCP    192.168.80.204:60965   146.75.28.157:443      ESTABLISHED     1920
-  TCP    [::]:135               [::]:0                 LISTENING       1740
-  TCP    [::]:445               [::]:0                 LISTENING       4
-  TCP    [::]:2179              [::]:0                 LISTENING       2968
-  TCP    [::]:5357              [::]:0                 LISTENING       4
-  TCP    [::]:7680              [::]:0                 LISTENING       23556
-  TCP    [::]:49664             [::]:0                 LISTENING       1452
-  TCP    [::]:49665             [::]:0                 LISTENING       1300
-  TCP    [::]:49666             [::]:0                 LISTENING       2248
-  TCP    [::]:49667             [::]:0                 LISTENING       3360
-  TCP    [::]:49668             [::]:0                 LISTENING       4344
-  TCP    [::]:49690             [::]:0                 LISTENING       1392
-  TCP    [::1]:7679             [::]:0                 LISTENING       18276
-  TCP    [::1]:42050            [::]:0                 LISTENING       13232
+  TCP    [ipv6-redacted]:135               [ipv6-redacted]:0                 LISTENING       1740
+  TCP    [ipv6-redacted]:445               [ipv6-redacted]:0                 LISTENING       4
+  TCP    [ipv6-redacted]:2179              [ipv6-redacted]:0                 LISTENING       2968
+  TCP    [ipv6-redacted]:5357              [ipv6-redacted]:0                 LISTENING       4
+  TCP    [ipv6-redacted]:7680              [ipv6-redacted]:0                 LISTENING       23556
+  TCP    [ipv6-redacted]:49664             [ipv6-redacted]:0                 LISTENING       1452
+  TCP    [ipv6-redacted]:49665             [ipv6-redacted]:0                 LISTENING       1300
+  TCP    [ipv6-redacted]:49666             [ipv6-redacted]:0                 LISTENING       2248
+  TCP    [ipv6-redacted]:49667             [ipv6-redacted]:0                 LISTENING       3360
+  TCP    [ipv6-redacted]:49668             [ipv6-redacted]:0                 LISTENING       4344
+  TCP    [ipv6-redacted]:49690             [ipv6-redacted]:0                 LISTENING       1392
+  TCP    [ipv6-redacted]:7679             [ipv6-redacted]:0                 LISTENING       18276
+  TCP    [ipv6-redacted]:42050            [ipv6-redacted]:0                 LISTENING       13232
   UDP    0.0.0.0:53             *:*                                    5828
   UDP    0.0.0.0:123            *:*                                    10008
   UDP    0.0.0.0:3702           *:*                                    8688
@@ -154,40 +154,41 @@ Active Connections
   UDP    192.168.80.204:2177    *:*                                    27832
   UDP    192.168.80.204:27036   *:*                                    2660
   UDP    192.168.80.204:65304   *:*                                    14080
-  UDP    [::]:123               *:*                                    10008
-  UDP    [::]:3702              *:*                                    8688
-  UDP    [::]:3702              *:*                                    8688
-  UDP    [::]:3702              *:*                                    12328
-  UDP    [::]:3702              *:*                                    12328
-  UDP    [::]:5353              *:*                                    15732
-  UDP    [::]:5353              *:*                                    15732
-  UDP    [::]:5353              *:*                                    1920
-  UDP    [::]:5353              *:*                                    22472
-  UDP    [::]:5353              *:*                                    22472
-  UDP    [::]:5353              *:*                                    1920
-  UDP    [::]:5353              *:*                                    15732
-  UDP    [::]:5353              *:*                                    1920
-  UDP    [::]:5353              *:*                                    22472
-  UDP    [::]:5353              *:*                                    2868
-  UDP    [::]:5355              *:*                                    2868
-  UDP    [::]:27036             *:*                                    2660
-  UDP    [::]:51684             *:*                                    2868
-  UDP    [::]:53864             *:*                                    5828
-  UDP    [::]:54507             *:*                                    8688
-  UDP    [::]:62402             *:*                                    2868
-  UDP    [::]:63997             *:*                                    2868
-  UDP    [::]:64757             *:*                                    12328
-  UDP    [::1]:1900             *:*                                    14080
-  UDP    [::1]:65302            *:*                                    14080
-  UDP    [fe80::2794:761:2385:2c22%19]:1900  *:*                                    14080
-  UDP    [fe80::2794:761:2385:2c22%19]:2177  *:*                                    27832
-  UDP    [fe80::2794:761:2385:2c22%19]:65300  *:*                                    14080
-  UDP    [fe80::b0df:a09b:5ace:627%13]:1900  *:*                                    14080
-  UDP    [fe80::b0df:a09b:5ace:627%13]:2177  *:*                                    27832
-  UDP    [fe80::b0df:a09b:5ace:627%13]:65301  *:*                                    14080
-  UDP    [fe80::e3bb:9596:e23f:762c%55]:1900  *:*                                    14080
-  UDP    [fe80::e3bb:9596:e23f:762c%55]:2177  *:*                                    27832
-  UDP    [fe80::e3bb:9596:e23f:762c%55]:65303  *:*                                    14080
+  UDP    [ipv6-redacted]:123               *:*                                    10008
+  UDP    [ipv6-redacted]:3702              *:*                                    8688
+  UDP    [ipv6-redacted]:3702              *:*                                    8688
+  UDP    [ipv6-redacted]:3702              *:*                                    12328
+  UDP    [ipv6-redacted]:3702              *:*                                    12328
+  UDP    [ipv6-redacted]:5353              *:*                                    15732
+  UDP    [ipv6-redacted]:5353              *:*                                    15732
+  UDP    [ipv6-redacted]:5353              *:*                                    1920
+  UDP    [ipv6-redacted]:5353              *:*                                    22472
+  UDP    [ipv6-redacted]:5353              *:*                                    22472
+  UDP    [ipv6-redacted]:5353              *:*                                    1920
+  UDP    [ipv6-redacted]:5353              *:*                                    15732
+  UDP    [ipv6-redacted]:5353              *:*                                    1920
+  UDP    [ipv6-redacted]:5353              *:*                                    22472
+  UDP    [ipv6-redacted]:5353              *:*                                    2868
+  UDP    [ipv6-redacted]:5355              *:*                                    2868
+  UDP    [ipv6-redacted]:27036             *:*                                    2660
+  UDP    [ipv6-redacted]:51684             *:*                                    2868
+  UDP    [ipv6-redacted]:53864             *:*                                    5828
+  UDP    [ipv6-redacted]:54507             *:*                                    8688
+  UDP    [ipv6-redacted]:62402             *:*                                    2868
+  UDP    [ipv6-redacted]:63997             *:*                                    2868
+  UDP    [ipv6-redacted]:64757             *:*                                    12328
+  UDP    [ipv6-redacted]:1900             *:*                                    14080
+  UDP    [ipv6-redacted]:65302            *:*                                    14080
+  UDP    [fe80::[iid-redacted]%26]:1900  *:*                                    14080
+  UDP    [fe80::[iid-redacted]%26]:2177  *:*                                    27832
+  UDP    [fe80::[iid-redacted]%26]:65300  *:*                                    14080
+  UDP    [fe80::[iid-redacted]%26]:1900  *:*                                    14080
+  UDP    [fe80::[iid-redacted]%26]:2177  *:*                                    27832
+  UDP    [fe80::[iid-redacted]%26]:65301  *:*                                    14080
+  UDP    [fe80::[iid-redacted]%26]:1900  *:*                                    14080
+  UDP    [fe80::[iid-redacted]%26]:2177  *:*                                    27832
+  UDP    [fe80::[iid-redacted]%26]:65303  *:*                                    14080
+  
 PS C:\Users\mlkoe> Get-NetTCPConnection -State Listen | Format-Table LocalAddress,LocalPort,OwningProcess
 
 LocalAddress   LocalPort OwningProcess
