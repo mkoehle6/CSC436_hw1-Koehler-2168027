@@ -139,6 +139,75 @@ Network Destination        Netmask          Gateway       Interface  Metric
 Persistent Routes:
   None
 
+
+C:\Users\mlkoe>arp -a
+Interface: 192.168.56.1 --- 0xd
+  Internet Address      Physical Address      Type
+  192.168.56.255        ff-ff-ff-XX-XX-XX     static
+  224.0.0.22            01-00-5e-XX-XX-XX     static
+  224.0.0.251           01-00-5e-XX-XX-XX     static
+  224.0.0.252           01-00-5e-XX-XX-XX     static
+  224.0.37.42           01-00-5e-XX-XX-XX     static
+  233.89.188.1          01-00-5e-XX-XX-XX     static
+  239.255.250.250       01-00-5e-XX-XX-XX     static
+  239.255.255.250       01-00-5e-XX-XX-XX     static
+  239.255.255.251       01-00-5e-XX-XX-XX     static
+  255.255.255.255       ff-ff-ff-XX-XX-XX     static
+
+Interface: 192.168.80.204 --- 0x13
+  Internet Address      Physical Address      Type
+  192.168.80.1          9e-05-d6-XX-XX-XX     dynamic
+  192.168.80.6          00-21-b9-XX-XX-XX     dynamic
+  192.168.80.7          00-09-b0-XX-XX-XX     dynamic
+  192.168.80.8          ea-4a-3b-XX-XX-XX     dynamic
+  192.168.80.13         00-06-78-XX-XX-XX     dynamic
+  192.168.80.15         e0-63-da-XX-XX-XX     dynamic
+  192.168.80.33         c0-a0-0d-XX-XX-XX     dynamic
+  192.168.80.44         f0-9f-c2-XX-XX-XX     dynamic
+  192.168.80.66         3c-7a-aa-XX-XX-XX     dynamic
+  192.168.80.67         c0-21-0d-XX-XX-XX     dynamic
+  192.168.80.78         f0-9f-c2-XX-XX-XX     dynamic
+  192.168.80.80         cc-98-8b-XX-XX-XX     dynamic
+  192.168.80.90         9c-05-d6-XX-XX-XX     dynamic
+  192.168.80.93         c0-21-0d-XX-XX-XX     dynamic
+  192.168.80.95         c0-a0-0d-XX-XX-XX     dynamic
+  192.168.80.105        74-83-c2-XX-XX-XX     dynamic
+  192.168.80.108        24-94-cb-XX-XX-XX     dynamic
+  192.168.80.112        00-11-32-XX-XX-XX     dynamic
+  192.168.80.113        d4-be-dc-XX-XX-XX     dynamic
+  192.168.80.114        86-7f-c6-XX-XX-XX     dynamic
+  192.168.80.130        74-83-c2-XX-XX-XX     dynamic
+  192.168.80.143        ca-18-3f-XX-XX-XX     dynamic
+  192.168.80.172        58-20-b1-XX-XX-XX     dynamic
+  192.168.80.174        84-1f-e8-XX-XX-XX     dynamic
+  192.168.80.200        78-6a-1f-XX-XX-XX     dynamic
+  192.168.80.233        f0-9f-c2-XX-XX-XX     dynamic
+  192.168.80.235        90-48-6c-XX-XX-XX     dynamic
+  192.168.80.241        74-83-c2-XX-XX-XX     dynamic
+  192.168.80.255        ff-ff-ff-XX-XX-XX     static
+  224.0.0.22            01-00-5e-XX-XX-XX     static
+  224.0.0.251           01-00-5e-XX-XX-XX     static
+  224.0.0.252           01-00-5e-XX-XX-XX     static
+  224.0.37.42           01-00-5e-XX-XX-XX     static
+  233.89.188.1          01-00-5e-XX-XX-XX     static
+  239.255.250.250       01-00-5e-XX-XX-XX     static
+  239.255.255.250       01-00-5e-XX-XX-XX     static
+  239.255.255.251       01-00-5e-XX-XX-XX     static
+  255.255.255.255       ff-ff-ff-XX-XX-XX     static
+
+Interface: 172.30.48.1 --- 0x37
+  Internet Address      Physical Address      Type
+  172.30.63.255         ff-ff-ff-XX-XX-XX     static
+  224.0.0.22            01-00-5e-XX-XX-XX     static
+  224.0.0.251           01-00-5e-XX-XX-XX     static
+  224.0.37.42           01-00-5e-XX-XX-XX     static
+  233.89.188.1          01-00-5e-XX-XX-XX     static
+  239.255.250.250       01-00-5e-XX-XX-XX     static
+  239.255.255.250       01-00-5e-XX-XX-XX     static
+  239.255.255.251       01-00-5e-XX-XX-XX     static
+  255.255.255.255       ff-ff-ff-XX-XX-XX     static
+############################################################################
+
    1. IPv4 address is 192.168.80.204. The subnet mask is 255.255.255.0 ->
    11111111 11111111 11111111 00000000 or /24 in CIDR notation. This means there are
    24 network bits and 8 host bits giving a total of 256 addresses in the block (2^8) with 254 being
@@ -152,5 +221,8 @@ Persistent Routes:
    of my network appliance, where it is configured for 86400 hours.  This equals 24 hours and corresponds 
    to the information collected above.
 
-   
+   4. 
+
+   5. 192.168.80.204 is a private address according to RFC 1918. I can tell because any address that 
+   starts with 192.168.0.0/16 is reserved.
  
