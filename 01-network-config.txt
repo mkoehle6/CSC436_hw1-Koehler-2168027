@@ -1,4 +1,6 @@
+# CSC 436 - Homework 1 - task 1
 # Network Configuration
+###############################
 
 C:\Users\mlkoe>ipconfig /all
 Windows IP Configuration
@@ -93,3 +95,62 @@ Ethernet adapter vEthernet (Default Switch):
    DHCPv6 IAID . . . . . . . . . . . : 922752349
    DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-XX-XX-XX-XX-DC-41-A9-XX-XX-XX
    NetBIOS over Tcpip. . . . . . . . : Enabled
+
+   
+C:\Users\mlkoe> route print -4
+===========================================================================
+Interface List
+ 19...18 c0 4d XX XX XX ......Intel(R) I211 Gigabit Network Connection
+ 13...0a 00 27 XX XX XX ......VirtualBox Host-Only Ethernet Adapter
+  6...dc 41 a9 XX XX XX ......Intel(R) Wi-Fi 6 AX200 160MHz
+  9...dc 41 a9 XX XX XX ......Microsoft Wi-Fi Direct Virtual Adapter
+ 10...de 41 a9 XX XX XX ......Microsoft Wi-Fi Direct Virtual Adapter #2
+  4...dc 41 a9 XX XX XX ......Bluetooth Device (Personal Area Network)
+  1...........................Software Loopback Interface 1
+ 55...00 15 5d XX XX XX ......Hyper-V Virtual Ethernet Adapter
+===========================================================================
+
+IPv4 Route Table
+===========================================================================
+Active Routes:
+Network Destination        Netmask          Gateway       Interface  Metric
+          0.0.0.0          0.0.0.0     192.168.80.1   192.168.80.204     25
+        127.0.0.0        255.0.0.0         On-link         127.0.0.1    331
+        127.0.0.1  255.255.255.255         On-link         127.0.0.1    331
+  127.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+      172.30.48.0    255.255.240.0         On-link       172.30.48.1   5256
+      172.30.48.1  255.255.255.255         On-link       172.30.48.1   5256
+    172.30.63.255  255.255.255.255         On-link       172.30.48.1   5256
+     192.168.56.0    255.255.255.0         On-link      192.168.56.1    281
+     192.168.56.1  255.255.255.255         On-link      192.168.56.1    281
+   192.168.56.255  255.255.255.255         On-link      192.168.56.1    281
+     192.168.80.0    255.255.255.0         On-link    192.168.80.204    281
+   192.168.80.204  255.255.255.255         On-link    192.168.80.204    281
+   192.168.80.255  255.255.255.255         On-link    192.168.80.204    281
+        224.0.0.0        240.0.0.0         On-link         127.0.0.1    331
+        224.0.0.0        240.0.0.0         On-link      192.168.56.1    281
+        224.0.0.0        240.0.0.0         On-link    192.168.80.204    281
+        224.0.0.0        240.0.0.0         On-link       172.30.48.1   5256
+  255.255.255.255  255.255.255.255         On-link         127.0.0.1    331
+  255.255.255.255  255.255.255.255         On-link      192.168.56.1    281
+  255.255.255.255  255.255.255.255         On-link    192.168.80.204    281
+  255.255.255.255  255.255.255.255         On-link       172.30.48.1   5256
+===========================================================================
+Persistent Routes:
+  None
+
+   1. IPv4 address is 192.168.80.204. The subnet mask is 255.255.255.0 ->
+   11111111 11111111 11111111 00000000 or /24 in CIDR notation. This means there are
+   24 network bits and 8 host bits giving a total of 256 addresses in the block (2^8) with 254 being
+   useable host addresses. 192.168.80.0 is the network address, and 192.168.80.255 is the broadcast address.
+
+   2. The default gateway, DHCP server, and DNS server are all colocated into a single appliance. 
+   This home/small-office network gateway runs a proprietary operating system that provides firewall 
+   and routing functionality, as well as the aforementioned gateway, DHCP, and DNS services.
+
+   3. The dhcp lease is 24 hours. I verified the lease duration in the dhcp server settings 
+   of my network appliance, where it is configured for 86400 hours.  This equals 24 hours and corresponds 
+   to the information collected above.
+
+   
+ 
