@@ -1,0 +1,95 @@
+# Network Configuration
+
+C:\Users\mlkoe>ipconfig /all
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : CPC-REDACTED
+   Primary Dns Suffix  . . . . . . . :
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+
+Ethernet adapter Ethernet:
+
+   Connection-specific DNS Suffix  . : localdomain
+   Description . . . . . . . . . . . : Intel(R) I211 Gigabit Network Connection
+   Physical Address. . . . . . . . . : 18-C0-4D-XX-XX-XX
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::[iid-redacted]%26(Preferred)
+   IPv4 Address. . . . . . . . . . . : 192.168.80.204(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . . . : Sunday, September 13, 2026 11:29:00 AM
+   Lease Expires . . . . . . . . . . : Monday, September 14, 2026 11:28:42 AM
+   Default Gateway . . . . . . . . . : 192.168.80.1
+   DHCP Server . . . . . . . . . . . : 192.168.80.1
+   DHCPv6 IAID . . . . . . . . . . . : 102285389
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-XX-XX-XX-XX-DC-41-A9-XX-XX-XX
+   DNS Servers . . . . . . . . . . . : 192.168.80.1
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+Ethernet adapter VirtualBox Host-Only Network:
+
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : VirtualBox Host-Only Ethernet Adapter
+   Physical Address. . . . . . . . . : 0A-00-27-XX-XX-XX
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::[iid-redacted]%26(Preferred)
+   IPv4 Address. . . . . . . . . . . : 192.168.56.1(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . :
+   DHCPv6 IAID . . . . . . . . . . . : 805961767
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-XX-XX-XX-XX-DC-41-A9-XX-XX-XX
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+Wireless LAN adapter Wi-Fi:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Intel(R) Wi-Fi 6 AX200 160MHz
+   Physical Address. . . . . . . . . : DC-41-A9-XX-XX-XX
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+
+Wireless LAN adapter Local Area Connection* 1:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Microsoft Wi-Fi Direct Virtual Adapter
+   Physical Address. . . . . . . . . : DC-41-A9-XX-XX-XX
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+
+Wireless LAN adapter Local Area Connection* 10:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Microsoft Wi-Fi Direct Virtual Adapter #2
+   Physical Address. . . . . . . . . : DE-41-A9-XX-XX-XX
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+
+Ethernet adapter Bluetooth Network Connection:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Bluetooth Device (Personal Area Network)
+   Physical Address. . . . . . . . . : DC-41-A9-XX-XX-XX
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+
+Ethernet adapter vEthernet (Default Switch):
+
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Hyper-V Virtual Ethernet Adapter
+   Physical Address. . . . . . . . . : 00-15-5D-XX-XX-XX
+   DHCP Enabled. . . . . . . . . . . : No
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::[iid-redacted]%26(Preferred)
+   IPv4 Address. . . . . . . . . . . : 172.30.48.1(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.240.0
+   Default Gateway . . . . . . . . . :
+   DHCPv6 IAID . . . . . . . . . . . : 922752349
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-XX-XX-XX-XX-DC-41-A9-XX-XX-XX
+   NetBIOS over Tcpip. . . . . . . . : Enabled
