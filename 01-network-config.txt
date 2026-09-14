@@ -221,7 +221,9 @@ Interface: 172.30.48.1 --- 0x37
    of my network appliance, where it is configured for 86400 hours.  This equals 24 hours and corresponds 
    to the information collected above.
 
-   4. 
+   4. The route table entry 172.30.48.0/20 is an entry that is not the default route, nor
+   is it on my 192.168.80.0/24 subnet.  According the the ipconfig data, this network address is
+   associated with the Hyper-V virtual adapter used by VirtualBox.
 
    5. 192.168.80.204 is a private address according to RFC 1918. I can tell because any address that 
    starts with 192.168.0.0/16 is reserved.
