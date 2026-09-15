@@ -2,7 +2,7 @@
 # Failure Shapes
 ###############################
 
-CASE 1 - Refused
+CASE 1 - Connection refused
 
 C:\Users\mlkoe>curl -sS --max-time 8 -v http://127.0.0.1:9/
 *   Trying 127.0.0.1:9...
@@ -22,10 +22,10 @@ Symptoms ruled out
 3. Packet filtering on the wire.  Filtering would have dropped the packet.  We received a response.
 
 Command to run next
- netstat -ano | findstr :9 - to check if a process is listening to port 9
+netstat -ano | findstr :9 - to check whether a process is listening on port 9.
 #########################################################################
 
-CASE 2 - Timmed out
+CASE 2 - Connection timed out
 
 C:\Users\mlkoe>curl -sS --max-time 8 -v http://192.0.2.1/
 *   Trying 192.0.2.1:80...
@@ -35,19 +35,20 @@ curl: (28) Connection timed out after 8015 milliseconds
  
 What happened on the wire
 1. A SYN packet was sent to 192.0.2.1.
-2. After 1 sec passed with no reply received, a second SYN packet was sent.
+2. After 1 second passed with no reply, a second SYN packet was sent.
 3. A third SYN packet was sent after an additional 2 seconds with no ACK.
-4. A fourth SYN packet was sent after an additional 4 seconds with no ACK recieved.
-5.  curl process ended after 8 seconds per --max-time flag.
+4. A fourth SYN packet was sent after an additional 4 seconds with no ACK received.
+5. The curl process ended after 8 seconds, as specified by the --max-time flag.
 
 Symptoms ruled out
-1. Anything that involves the server/process you are trying to connect to. The host
-would have replied with an ACK.
+1. Anything that involves the server or process you are trying to connect to. The host
+would have replied with an ACK if it had received the SYN packet.
 
 Command to run next
-1. Check the address is a legitimate address. No typos or reserved address.
-2. Assuming I have access and administrative privilages to destination host - check that host is powered on, and the operating system is up
-and running.  Second would be to check if there is a firewall rule in place that drops incoming packets to the port. 
+1. Check that the address is legitimate, with no typos or unintended reserved address.
+2. Assuming I have access and administrative privileges on the destination host, check that
+the host is powered on and that the operating system is up and running. Next, check whether
+a firewall rule is silently dropping incoming packets to the port.
 
 ###########################################################################
 CASE 3 - Reset mid-connection
@@ -75,8 +76,16 @@ curl: (56) Recv failure: Connection was reset
 
 What happened on the wire
 1. Localhost port 38497 sent a SYN packet to localhost port 8472.
-2. Port 8472 replyed with a SYN, ACK packet.
-3. Port 38497 replyed with an ACK packet to establish the connection. (TCP 3 way handshake)
-4. Port 38497 then sent a http GET request.
+2. Port 8472 replied with a SYN, ACK packet.
+3. Port 38497 replied with an ACK packet to establish the connection (the TCP three-way handshake).
+4. Port 38497 then sent an HTTP GET request.
 5. Port 8472 closed the connection by sending a RST, ACK packet.
 
+Symptoms ruled out
+1. Similar to case 1, we know the host is online because it answered.
+2. There are no name-resolution issues because we used an IP address.
+3. No packet filtering on the wire between source and destination.
+
+Command to run next
+Using Windows PowerShell, $LASTEXITCODE will display the error code if it was not displayed.
+Other options include checking for a server crash or an expired NAT entry.
