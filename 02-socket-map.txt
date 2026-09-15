@@ -256,7 +256,7 @@ local address : local port        remote address : remote port
 192.168.80.204:10291           140.82.114.26:443 
 
 The client port is a dynamically allocated port.  It is assigned by the kernel when the
-client sends a request to the server.
+client sends a request to the remote server.
 
 4. Dynamic port range:
 netsh int ipv4 show dynamicport tcp
