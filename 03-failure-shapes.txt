@@ -1,0 +1,82 @@
+# CSC 436 - Homework 1 - task 3
+# Failure Shapes
+###############################
+
+CASE 1 - Refused
+
+C:\Users\mlkoe>curl -sS --max-time 8 -v http://127.0.0.1:9/
+*   Trying 127.0.0.1:9...
+* connect to 127.0.0.1 port 9 from 0.0.0.0 port 39164 failed: Connection refused
+* Failed to connect to 127.0.0.1:9 after 2038 ms: Could not connect to server
+* closing connection #0
+curl: (7) Failed to connect to 127.0.0.1:9 after 2038 ms: Could not connect to server
+
+What happened on the wire
+1. A SYN packet was sent from localhost port 39164 to localhost port 9.
+2. After receiving the packet, the host checked for a socket listening on port 9, found none,
+and sent a RST, ACK packet in return.
+
+Symptoms ruled out
+1. The host is down or unreachable. We received a packet from the host.
+2. A name resolution problem. DNS is not involved as we have an IP address.
+3. Packet filtering on the wire.  Filtering would have dropped the packet.  We received a response.
+
+Command to run next
+ netstat -ano | findstr :9 - to check if a process is listening to port 9
+#########################################################################
+
+CASE 2 - Timmed out
+
+C:\Users\mlkoe>curl -sS --max-time 8 -v http://192.0.2.1/
+*   Trying 192.0.2.1:80...
+* Connection timed out after 8015 milliseconds
+* closing connection #0
+curl: (28) Connection timed out after 8015 milliseconds
+ 
+What happened on the wire
+1. A SYN packet was sent to 192.0.2.1.
+2. After 1 sec passed with no reply received, a second SYN packet was sent.
+3. A third SYN packet was sent after an additional 2 seconds with no ACK.
+4. A fourth SYN packet was sent after an additional 4 seconds with no ACK recieved.
+5.  curl process ended after 8 seconds per --max-time flag.
+
+Symptoms ruled out
+1. Anything that involves the server/process you are trying to connect to. The host
+would have replied with an ACK.
+
+Command to run next
+1. Check the address is a legitimate address. No typos or reserved address.
+2. Assuming I have access and administrative privilages to destination host - check that host is powered on, and the operating system is up
+and running.  Second would be to check if there is a firewall rule in place that drops incoming packets to the port. 
+
+###########################################################################
+CASE 3 - Reset mid-connection
+
+Terminal 1
+PS C:\Users\mlkoe\Downloads> node .\abort-server.mjs
+abort server listening on 127.0.0.1:8472
+try:  curl -sS --max-time 8 -v http://127.0.0.1:8472/
+expect: curl: (56) Recv failure: Connection was reset
+
+Terminal 2
+C:\Users\mlkoe>curl -sS --max-time 8 -v http://127.0.0.1:8472/
+*   Trying 127.0.0.1:8472...
+* Established connection to 127.0.0.1 (127.0.0.1 port 8472) from 127.0.0.1 port 38497
+* using HTTP/1.x
+> GET / HTTP/1.1
+> Host: 127.0.0.1:8472
+> User-Agent: curl/8.21.0
+> Accept: */*
+>
+* Request completely sent off
+* Recv failure: Connection was reset
+* closing connection #0
+curl: (56) Recv failure: Connection was reset
+
+What happened on the wire
+1. Localhost port 38497 sent a SYN packet to localhost port 8472.
+2. Port 8472 replyed with a SYN, ACK packet.
+3. Port 38497 replyed with an ACK packet to establish the connection. (TCP 3 way handshake)
+4. Port 38497 then sent a http GET request.
+5. Port 8472 closed the connection by sending a RST, ACK packet.
+
