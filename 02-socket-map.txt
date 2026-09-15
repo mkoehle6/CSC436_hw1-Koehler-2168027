@@ -237,28 +237,28 @@ LocalAddress   LocalPort OwningProcess
 
 #######################################
 
-1. Socket 0.0.0.0:53 is listening for DNS queries on that arrive on any of the hosts network 
-interfaces.  Socket 0.0.0.0:123 is listening for Network Time Protocol (NTP) requests on any
+1. Socket 0.0.0.0:53 is listening for DNS queries that arrive on any of the host's network
+interfaces. Socket 0.0.0.0:123 is listening for Network Time Protocol (NTP) requests on any
 of the interfaces.
 
 The wildcard address 0.0.0.0 is listening on TCP ports 135, 445, 2179, 5040, 5357, 7680, 27036,
-49664-49668, and 49690. The ipv6 wildcard [::] is listening on TCP ports 135, 445, 2179, 5357, 7680, 
-49664–49668, and 49690.  Both ipv4 and ipv6 are listening on UDP ports 53, 123, 3702, 5050, 5353, 5355, 27036,
+49664-49668, and 49690. The IPv6 wildcard address [::] is listening on TCP ports 135, 445, 2179, 5357,
+7680, 49664-49668, and 49690. Both IPv4 and IPv6 are listening on UDP ports 53, 123, 3702, 5050, 5353, 5355, 27036,
 51684, 53864, 54507, 62402, 63997, and 64757.
 
-2.  127.0.0.1:6463 is Discords local RPC server. This server will only accept connections originating 
-from the loopback interface and not from any other network interface.  0.0.0.0:27036 is the port for
-by the gaming service Steam Client.  Traffic from any network interface such as mobile device connected via WiFi
-and on the same subnet can connect to this service.
+2. 127.0.0.1:6463 is Discord's local RPC server. This server will only accept connections originating
+from the loopback interface and not from any other network interface. 0.0.0.0:27036 is a port used
+by the gaming service Steam Client. Traffic from any network interface, such as a mobile device connected
+via Wi-Fi and on the same subnet, can connect to this service.
 
-3. Four tuple of a connected socket
-local addr : local port        remote addr : remote port
+3. Four-tuple of a connected socket:
+local address : local port        remote address : remote port
 192.168.80.204:10291           140.82.114.26:443 
 
 The client port is a dynamically allocated port.  It is assigned by the kernel when the
 client sends a request to the server.
 
-4. Dynamic port range
+4. Dynamic port range:
 netsh int ipv4 show dynamicport tcp
 
 Protocol tcp Dynamic Port Range

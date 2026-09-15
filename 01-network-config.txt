@@ -217,14 +217,14 @@ Interface: 172.30.48.1 --- 0x37
    This home/small-office network gateway runs a proprietary operating system that provides firewall 
    and routing functionality, as well as the aforementioned gateway, DHCP, and DNS services.
 
-   3. The dhcp lease is 24 hours. I verified the lease duration in the dhcp server settings 
-   of my network appliance, where it is configured for 86400 hours.  This equals 24 hours and corresponds 
-   to the information collected above.
+   3. The DHCP lease is 24 hours. I verified the lease duration in the DHCP server settings
+   of my network appliance, where it is configured for 86400 seconds. This equals 24 hours
+   and corresponds to the information collected above.
 
    4. The route table entry 172.30.48.0/20 is an entry that is not the default route, nor
-   is it on my 192.168.80.0/24 subnet.  According the the ipconfig data, this network address is
+   is it on my 192.168.80.0/24 subnet. According to the ipconfig data, this network address is
    associated with the Hyper-V virtual adapter used by VirtualBox.
 
-   5. 192.168.80.204 is a private address according to RFC 1918. I can tell because any address that 
+   5. 192.168.80.204 is a private address according to RFC 1918. I can tell because any address that
    starts with 192.168.0.0/16 is reserved.
  
