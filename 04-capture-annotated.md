@@ -66,7 +66,7 @@ Domain Name System (response)
 time to live of 78 seconds. RFC 1035 specifies TTL as an unsigned 32-bit integer, but
 the TTL value is controlled by the DNS operator and may change over time.
 
-**What this does not prove:** It does not prove that either address is reachable, or that the server will answer.
+**What this does not prove:** It does not prove that either address is reachable or that the server will answer.
 
 **How I would independently verify:** I used Google Admin Toolbox Dig, available at
 [https://toolbox.googleapps.com/apps/dig/#A/](https://toolbox.googleapps.com/apps/dig/#A/)
@@ -154,5 +154,61 @@ PS C:\Users\mlkoe> curl.exe -sS -v https://example.com/ -o NUL
 * Connection #0 to host example.com:443 left intact
 ```
 
+
 ## Stage 3 - TLS ClientHello
+**Display filter:** tls.handshake.type == 1
 ```
+6	0.021536200	192.168.80.204	104.20.23.154	TLSv1.3	516	Client Hello (SNI=www.example.com)
+```
+The record decoded:
+```
+Handshake Protocol: Client Hello
+    Handshake Type: Client Hello (1)
+    Length: 453
+    Version: TLS 1.2 (0x0303)
+    Random: ce1cea1e4f060f91f228080f88ddfa57dec95b07ec2cccb449de97157b5a4d93
+    Session ID Length: 32
+    Session ID: 170cc8454fbf571a24867de91092e9a4c874672d8e118019da6083a8d2f35f44
+    Cipher Suites Length: 40
+    Cipher Suites (20 suites)
+    Compression Methods Length: 1
+    Compression Methods (1 method)
+    Extensions Length: 340
+    Extension: server_name (len=20) name=www.example.com
+    Extension: status_request (len=5)
+    Extension: supported_versions (len=5) TLS 1.3, TLS 1.2
+    Extension: signature_algorithms (len=26)
+    Extension: session_ticket (len=0)
+    Extension: supported_groups (len=8)
+    Extension: ec_point_formats (len=2)
+    Extension: application_layer_protocol_negotiation (len=11)
+    Extension: key_share (len=208) x25519, secp256r1, secp384r1
+    Extension: post_handshake_auth (len=0)
+    Extension: extended_master_secret (len=0)
+    Extension: renegotiation_info (len=1)
+    Extension: psk_key_exchange_modes (len=2)
+    [JA4: t13d2013h1_2b729b4bf6f3_e24568c0d440]
+    [JA4_r: t13d2013h1_002f,0035,003c,003d,009c,009d,1301,1302,c009,c00a,c013,c014,c023,c024,c027,c028,c02b,c02c,c02f,c030_0005,000a,000b,000d,0017,0023,002b,002d,0031,0033,ff01_0804,0805,0806,0401,0501,0201,0403,0503,0203,0202,0601,0603]
+    [JA3 Fullstring: 771,4866-4865-49196-49195-49200-49199-49188-49187-49192-49191-49162-49161-49172-49171-157-156-61-60-53-47,0-5-43-13-35-10-11-16-51-49-23-65281-45,29-23-24,0]
+    [JA3: fae0e5d973c96ae1888b99538efa0363]
+```
+**What this proves:** The client is initiating a TLS handshake. This is the first part of
+establishing a secure connection.
+**What this does not prove:** The connection is secure. Only the client side has initiated
+the handshake; the server still needs to respond and complete the negotiation.
+**How I would independently verify:**
+```
+PS C:\Users\mlkoe> curl.exe -sS -o NUL -w "%{ssl_verify_result} %{http_version}\n" https://www.example.com
+0 1.1
+```
+According to the curl manual, `ssl_verify_result = 0` means that certificate verification was successful.
+
+
+## Stage 4 - http
+**Display filter:** http.request
+
+There are no packets matched with this display filter.
+
+**What this proves:** http packets are being encrypted by TLS.
+
+**What this does not prove:** The application layer is functioning properly.
