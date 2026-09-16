@@ -37,13 +37,24 @@ PS C:\Users\mlkoe> curl.exe -sS -v https://www.burnscodev.com -o NUL
 31 { [142 bytes data]
 32 * Connection #0 to host www.burnscodev.com:443 left intact
 ```
-1. RESOLUTION: Line 1 "Host www.burnscodev.com:443 was resolved" and Line 4 " Trying 207.207.210.36:443..."
-2. TRUST: Line 21 "* schannel: SSL/TLS connection renegotiated".  A secure connection has been established. Schannel
-does not output TLS information. GitHub Copilot suggested using the -sS, -v, -o flags will display the TLS version
-and cipher.  This was obviously wrong as these were the flags I had used originally. 
-3. PROTOCOL: Line 9 "* using HTTP/1.x". Line 6 shows the client offering http/1.1 with line 7 accepting.
+1. RESOLUTION: Line 1, "Host www.burnscodev.com:443 was resolved," and line 4,
+   "Trying 207.207.210.36:443..." show that DNS resolution succeeded and curl selected
+   one of the returned IPv4 addresses.
+2. TLS: Line 21, "* schannel: SSL/TLS connection renegotiated," shows that the TLS
+   negotiation completed. This Schannel trace does not include the negotiated TLS version
+   or cipher. The `-sS`, `-v`, and `-o` flags do not cause this curl build to display
+   those values.
+3. PROTOCOL: Line 9, "* using HTTP/1.x," identifies the HTTP protocol version. Line 6
+   shows the client offering HTTP/1.1, and line 7 shows that the server accepted it.
 
 ```
 PS C:\Users\mlkoe> curl.exe -sS -o NUL -w "dns=%{time_namelookup} tcp=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total}\n" https://www.burnscodev.com
 dns=0.037696 tcp=0.127631 tls=0.238390 ttfb=0.325246 total=0.325301
 ```
+Gap from start to dns completion: 0.037696 sec.
+Gap between dns resolution and three way handshake completion: .089935 sec.
+Gap between tcp handshake ack and tls handshake completion: .110759 sec.
+Gap between tls handshake completion and start of first byte transfer: .086856 sec.
+Gap between end of operation and start of byte transfer: .000055 sec.
+
+The TLS handshake is the most expensive phase of the operation.
