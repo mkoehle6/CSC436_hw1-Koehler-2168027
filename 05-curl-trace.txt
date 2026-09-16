@@ -1,0 +1,49 @@
+# CSC 436 - Homework 1 - Task 5
+# Curl Trace
+###############################
+
+```
+PS C:\Users\mlkoe> curl.exe -sS -v https://www.burnscodev.com -o NUL
+1 * Host www.burnscodev.com:443 was resolved.
+2 * IPv6: (none)
+3 * IPv4: 207.207.210.36, 207.207.210.23, 207.207.210.50
+4 *   Trying 207.207.210.36:443...
+5 * schannel: disabled automatic use of client certificate
+6 * ALPN: curl offers http/1.1
+7 * ALPN: server accepted http/1.1
+8 * Established connection to www.burnscodev.com (207.207.210.36 port 443) from 192.168.80.204 port 59353
+9 * using HTTP/1.x
+10 > GET / HTTP/1.1
+11 > Host: www.burnscodev.com
+12 > User-Agent: curl/8.21.0
+13 > Accept: */*
+14 >
+15 * Request completely sent off
+16 * schannel: remote party requests renegotiation
+17 * schannel: renegotiating SSL/TLS connection
+18 * schannel: SSL/TLS connection renegotiated
+19 * schannel: remote party requests renegotiation
+20 * schannel: renegotiating SSL/TLS connection
+21 * schannel: SSL/TLS connection renegotiated
+22 < HTTP/1.1 302 Moved Temporarily
+23 < Server: openresty
+24 < Date: Wed, 16 Sep 2026 01:53:39 GMT
+25 < Content-Type: text/html
+26 < Content-Length: 142
+27 < Connection: keep-alive
+28 < Location: https://burnscodev-com.l.ink/
+29 < X-Frame-Options: sameorigin
+30 <
+31 { [142 bytes data]
+32 * Connection #0 to host www.burnscodev.com:443 left intact
+```
+1. RESOLUTION: Line 1 "Host www.burnscodev.com:443 was resolved" and Line 4 " Trying 207.207.210.36:443..."
+2. TRUST: Line 21 "* schannel: SSL/TLS connection renegotiated".  A secure connection has been established. Schannel
+does not output TLS information. GitHub Copilot suggested using the -sS, -v, -o flags will display the TLS version
+and cipher.  This was obviously wrong as these were the flags I had used originally. 
+3. PROTOCOL: Line 9 "* using HTTP/1.x". Line 6 shows the client offering http/1.1 with line 7 accepting.
+
+```
+PS C:\Users\mlkoe> curl.exe -sS -o NUL -w "dns=%{time_namelookup} tcp=%{time_connect} tls=%{time_appconnect} ttfb=%{time_starttransfer} total=%{time_total}\n" https://www.burnscodev.com
+dns=0.037696 tcp=0.127631 tls=0.238390 ttfb=0.325246 total=0.325301
+```
