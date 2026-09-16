@@ -1,3 +1,5 @@
+# CSC 436 - Homework 1 - Task 8
+# Arrange a domain
 
 
 PS C:\Users\mlkoe> nslookup -type=TXT burnscodev.com
