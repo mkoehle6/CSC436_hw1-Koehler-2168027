@@ -2,4 +2,4 @@
 # DevTools HAR and waterfall
 
 
-![waterfall screenshot](waterfall-screenshot.png)
+
