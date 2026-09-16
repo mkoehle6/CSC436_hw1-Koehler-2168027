@@ -10,7 +10,8 @@ The slowest request was from https://dpu-p-001.sitecorecontenthub.cloud/api/publ
 This script loads a video titled ""Hero Film - V7_Balanced - 01202026_1100.mp4". 
 The request was started 313.36 ms after the page load started.  The request queued for 4.44 ms, then stalled for an additional 51 microseconds. The DNS looup took 24.03 ms to finish. The TCP handshake was an additional 24.03 ms. A TLS connection took 14.14 ms to establish.  It took just 90 microseconds to send the request and the browser waited 272.18 ms for the server to respond.  The content took 10.37 seconds to download.
 
-The HAR
+The HAR shows the first eight links of the URL chain.  It is all about network performance and provides information on how fast a packet from the applicaton layer down to the wire to its destination and back again.  The HAR does not provide any infomation about browser performance.  Links nine through twelve are about how well the browser can parse or execute the informaton received from the network.
+
 
 
 
