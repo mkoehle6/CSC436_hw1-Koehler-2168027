@@ -68,6 +68,24 @@ ubuntu@campuspulse-demo:~$ curl -sS --max-time 6 -o /dev/null \
     -w "%{http_code} in %{time_total}s\n" http://10.42.7.19:8080/healthz
 200 in 0.004s
 ```
+### Marcus's Hypotheses
+The deprecated config key has nothing to do with the problem.  Deprecated means it will no longer be supported in future versions.  Line 4 of 04-container-log.txt clear states the config
+key will be removed in the next version of the software, not that it has already been removed.
+```
+2026-08-16T03:00:12.004Z  WARN  config key "trustProxyHeaders" is deprecated and will be
+2026-08-16T03:00:12.004Z  WARN  removed in v0.5. Use "proxy.trustForwardedFor" instead.
+```
+Additionally, the suggestion of binding the network interface to 0.0.0.0 is wrong as well. It is already bound to that address as Marcus states and is noted
+at line 5 of 04-container-log.txt.
+
+```
+2026-08-16T03:00:12.019Z  INFO  campuspulse v0.4.2 listening on 0.0.0.0:8080
+```
+Lastly, DNS is not the problem either.  Line 8 from 01-curl-from-outside.txt shows that dns resolution is working correctly. 
+```
+* Host status.campuspulse-demo.example:443 was resolved.
+```
+
 ### The Fix
 The fix would be to undo the change to the security group and re-add the rule to allow incoming HTTPS traffic on port 443.
 If the following curl command returns with something other that a timeout, it would prove that the machine is reachable from the internet.
