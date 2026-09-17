@@ -29,12 +29,7 @@ The host being down or unreachable was ruled out since the error message indicat
 ```
 C:\> Get-NetTCPConnection -State Listen -LocalPort 8471
 ```
-### Output That Would Prove Me wrong
-```
- $ netstat -ano | findstr :8471
 
-      TCP    0.0.0.0:8471           0.0.0.0:0              LISTENING       41768
- ```
  ### Priya's Hypotheses
  None of Priya's hypotheses were correct. Line 12 of file 04-curl-from-dev.txt is the connection refused message.  If port 8471 was blocked, the packet would have been dropped. Additionally, WiFi client isolation prevents client computers from talking to each other by dropping packets.  Both would have resulted in timed out errors.
  Lastly, line 35 of 02-listening-sockets.txt shows the firewall is disabled.  It is not blocking port 8471. 
@@ -46,5 +41,10 @@ C:\> Get-NetTCPConnection -State Listen -LocalPort 8471
 ```
 ### The Fix
 To fix the issue, Priya needs to configure the CampusPulse application to listen on all network interfaces.
+Netstat command filtered for port 8471 after the fix would show that the application is now listening on all interfaces.
+```
+ $ netstat -ano | findstr :8471
 
-
+      TCP    0.0.0.0:8471           0.0.0.0:0              LISTENING       41768
+ ```
+ Moving the port from 8471 to 80 would change nothing.  The socket would still be bound to the localhost interface and would not receive IP traffic.
