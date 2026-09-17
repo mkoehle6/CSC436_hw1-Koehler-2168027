@@ -48,3 +48,29 @@ Netstat command filtered for port 8471 after the fix would show that the applica
       TCP    0.0.0.0:8471           0.0.0.0:0              LISTENING       41768
  ```
  Moving the port from 8471 to 80 would change nothing.  The socket would still be bound to the localhost interface and would not receive IP traffic.
+
+
+ ## Failure 02 - Timeout from outside
+
+ ### Observation
+ Https requests from the public internet timeout with no response.  Https requests from the loopback and private address succeed.
+
+ ### Mechanism
+ SYN packets from the public internet do not reach graders machine. The packets are dropped somewhere between the public internet and the grader's machine.  The packets do not reach the grader's machine, so the operating system does not respond with a RST, ACK packet.  The client waits for a response until it times out. A connection refused would indicate the machine is at least reachable from the public internet.
+
+ ### Root Cause
+ Line 34 of file 05-security-group.json shows that rule 'allow-https` (Tcp/443) was removed on 8/13/2026 causing the security group to activly block incoming HTTPS traffic from the public internet.  
+
+ ### Proof It Is Not Failure 01
+ Line 20 from 02-curl-on-the-box.txt proves the application is listening on a non-loopback interface.
+ ```
+ubuntu@campuspulse-demo:~$ curl -sS --max-time 6 -o /dev/null \
+    -w "%{http_code} in %{time_total}s\n" http://10.42.7.19:8080/healthz
+200 in 0.004s
+```
+### The Fix
+The fix would be to undo the change to the security group and re-add the rule to allow incoming HTTPS traffic on port 443.
+If the following curl command returns with something other that a timeout, it would prove that the machine is reachable from the internet.
+```
+$ curl -sS --max-time 30 -v https://status.campuspulse-demo.example/healthz
+```
