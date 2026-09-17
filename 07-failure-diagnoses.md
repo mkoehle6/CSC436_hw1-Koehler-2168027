@@ -35,5 +35,16 @@ C:\> Get-NetTCPConnection -State Listen -LocalPort 8471
 
       TCP    0.0.0.0:8471           0.0.0.0:0              LISTENING       41768
  ```
+ ### Priya's Hypotheses
+ None of Priya's hypotheses were correct. Line 12 of file 04-curl-from-dev.txt is the connection refused message.  If port 8471 was blocked, the packet would have been dropped. Additionally, WiFi client isolation prevents client computers from talking to each other by dropping packets.  Both would have resulted in timed out errors.
+ Lastly, line 35 of 02-listening-sockets.txt shows the firewall is disabled.  It is not blocking port 8471. 
+
+ A failed ping does not prove that the host is down or unreachable.  The ping command uses ICMP, which is a different protocol than TCP.  The host may be reachable but not responding to ICMP packets.
+ The error message from line 12 of file 04-curl-from-dev.txt indicates that the host was reachable, but no application was listening on the requested port.  The operating system responded with a RST, ACK packet, indicating that the connection was refused.
+ ```
+ curl: (7) Failed to connect to 192.168.1.47 port 8471 after 3 ms: Connection refused
+```
+### The Fix
+To fix the issue, Priya needs to configure the CampusPulse application to listen on all network interfaces.
 
 
